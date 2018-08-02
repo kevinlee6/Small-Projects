@@ -7,4 +7,5 @@
     <li>Command Line Hangman App written in Ruby</li>
     <li>Command Line Subway App written in Ruby</li>
     <li>Command Line Towers of Hanoi game written in Ruby</li>
+    <li>Ruby/Sinatra App which utilizes Google Books API</li>
 </ol>
