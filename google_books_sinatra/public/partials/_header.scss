@@ -1,0 +1,14 @@
+.jumbotron {
+  background: $primary-color url("http://www.loganberrybooks.com/img/about/mural%20final%20layout.jpg") no-repeat;
+  background-size: cover;
+  color: $primary-color;
+
+  h1 {
+    margin: 0 auto;
+    text-align: center;
+    background: rgba(222, 222, 222, 0.8);
+    width: 30%;
+    min-width: 300px;
+    padding: 10px;
+  }
+}
