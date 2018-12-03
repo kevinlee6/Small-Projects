@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  width: 80vw;
+  padding-top: 80vw;
+}
+
+.gamepiece {
+  width: 33%;
+}
