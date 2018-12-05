@@ -14,7 +14,9 @@
 }
 
 .piece{
+  font-size: 3em;
   width: 33%;
+  height: 33%;
   border: 1px solid black;
   display: flex;
   justify-content: center;
