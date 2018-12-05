@@ -83,7 +83,9 @@ class Game {
         this.checkIfWin() ? this.win() : this.noWin();
 
         // Check if there are any more moves available
-        if (this.state.win || this.state.turnNum > 8) this.endGame();
+        if (this.state.win || this.state.turnNum > 8) {
+          this.endGame();
+        }
         else {
           piece.removeEventListener('click', cb);
           piece.classList.remove('responsive');
