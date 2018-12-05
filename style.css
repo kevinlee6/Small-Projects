@@ -1,4 +1,8 @@
 .container {
+  display: flex;
+}
+
+.board{
   position: relative;
   display: flex;
   flex-wrap: wrap;

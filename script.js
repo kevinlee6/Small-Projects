@@ -1,4 +1,4 @@
-const container = document.getElementById('container');
+const board = document.getElementById('board');
 
 class Game {
   constructor() {
@@ -51,8 +51,22 @@ class Game {
 
     piece.addEventListener('click', this.handleClickPiece(piece, i));
 
-    // global const, container
-    container.appendChild(piece);
+    // global const, board
+    board.appendChild(piece);
+  }
+
+  endGame() {
+    const pieces = document.getElementsByClassName('piece');
+    for (let i = 0; i < pieces.length; i++) {
+      pieces[i].removeEventListener('click', this.handlers[i]);
+      pieces[i].classList.remove('responsive');
+    }
+    const text = this.state.win ?
+      `Congratulations! ${this.state.turnPlayer} won the game.` :
+      'Draw. There are no more spaces on the board.'
+    const template = `<div>${text}</div>`
+    const results = document.getElementById('results');
+    results.innerHTML = template;
   }
 
   handleClickPiece(piece, i) {
@@ -68,8 +82,13 @@ class Game {
         // Check win
         this.checkIfWin() ? this.win() : this.noWin();
 
-        piece.removeEventListener('click', cb);
-        piece.classList.remove('responsive');
+        // Check if there are any more moves available
+        if (this.state.win || this.state.turnNum > 8) this.endGame();
+        else {
+          piece.removeEventListener('click', cb);
+          piece.classList.remove('responsive');
+        }
+
     }
     this.handlers.push(cb);
     return cb;
@@ -85,11 +104,6 @@ class Game {
 
   win() {
     this.state.win = true;
-    const pieces = document.getElementsByClassName('piece');
-    for (let i = 0; i < pieces.length; i++) {
-      pieces[i].removeEventListener('click', this.handlers[i]);
-      pieces[i].classList.remove('responsive');
-    }
   }
 };
 
@@ -98,6 +112,6 @@ const game = new Game();
 
 startBtn.addEventListener('click', e => {
   e.preventDefault();
-  container.removeChild(startBtn);
+  board.removeChild(startBtn);
   game.createGame(); 
 });
