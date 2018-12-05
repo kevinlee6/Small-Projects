@@ -1,4 +1,3 @@
-const startBtn = document.getElementById('start');
 const container = document.getElementById('container');
 
 class Game {
@@ -16,42 +15,67 @@ class Game {
       history: [],
       win: false,
     };
+    this.handlers = [];
   }
 
-  checkIfWin = () => {
+  checkIfWin() {
+    const pieces = document.getElementsByClassName('piece'); 
 
+    for (let k in this.winCombos) {
+      const combos = this.winCombos[k];
+
+      // Only one of the combos need to be met to win
+      const res = combos.some(combo => {
+        const compare = pieces.item(combo[0]).textContent;
+        if (compare === '') return false;
+        return combo.every(i => pieces.item(i).textContent === compare);
+      });
+
+      if (res) return true;
+    }
+
+    // If all cases are checked and there's no match, then
+    return false;
   }
 
-  createGame = () => {
+  createGame() {
     for (let i = 0; i < 9; i++) {
-      this.createPiece(container);
+      this.createPiece(i);
     }
   }
 
-  createPiece = i => {
+  createPiece(i) {
     const piece = document.createElement('div');
-    piece.classList.add(`piece piece-${i}`);
+    piece.classList.add('piece', 'responsive');
 
-    piece.onclick(e => {
-      const player = this.state.turnPlayer;
 
-      // Set X or O
-      piece.textContent =
-        player === this.playerOne ?
-          this.playerOne : this.playerTwo;
-
-      // Check win
-      this.checkIfWin() ? this.win() : this.noWin();
-
-      // Push into history (moves array)
-      this.state.history.push(i);
-    });
+    piece.addEventListener('click', this.handleClickPiece(piece, i));
 
     // global const, container
     container.appendChild(piece);
   }
+
+  handleClickPiece(piece, i) {
+    const cb = () => {
+        // Set X or O
+        piece.textContent =
+          this.state.turnPlayer === this.playerOne ?
+            this.playerOne : this.playerTwo;
+
+        // Push into history (moves array); i from closure
+        this.state.history.push(i);
+
+        // Check win
+        this.checkIfWin() ? this.win() : this.noWin();
+
+        piece.removeEventListener('click', cb);
+        piece.classList.remove('responsive');
+    }
+    this.handlers.push(cb);
+    return cb;
+  }
   
-  noWin = () => {
+  noWin() {
     this.state.turnNum += 1;
 
     this.state.turnPlayer =
@@ -59,7 +83,21 @@ class Game {
         this.playerTwo : this.playerOne;
   }
 
-  win = () => {
+  win() {
     this.state.win = true;
+    const pieces = document.getElementsByClassName('piece');
+    for (let i = 0; i < pieces.length; i++) {
+      pieces[i].removeEventListener('click', this.handlers[i]);
+      pieces[i].classList.remove('responsive');
+    }
   }
 };
+
+const startBtn = document.getElementById('start');
+const game = new Game();
+
+startBtn.addEventListener('click', e => {
+  e.preventDefault();
+  container.removeChild(startBtn);
+  game.createGame(); 
+});

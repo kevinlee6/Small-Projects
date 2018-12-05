@@ -1,9 +1,27 @@
 .container {
+  position: relative;
   display: flex;
-  width: 80vw;
-  padding-top: 80vw;
+  flex-wrap: wrap;
+  width: 50vw;
+  height: 50vw;
 }
 
-.gamepiece {
+#start {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: (-50%, -50%);
+}
+
+.piece{
   width: 33%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.responsive {
+  cursor: pointer;
+
 }
