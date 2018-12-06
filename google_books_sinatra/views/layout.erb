@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Books</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="jumbotron">
+      <h1>Google Books</h1>
+    </header>
+
+    <div id="wrapper">
+      <form action="/" method="post" name="form" id="form">
+        <input type="text" name="input" id="input" placeholder="Enter the name of the book here">
+        <input class="btn btn-primary" type="submit">
+      </form>
+
+      <%= yield %>
+    </div>
+
+    <footer id="footer">
+      2018
+    </footer>
+</body>
+</html>

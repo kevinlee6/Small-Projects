@@ -1,0 +1,52 @@
+.jumbotron {
+  background: navy url("http://www.loganberrybooks.com/img/about/mural%20final%20layout.jpg") no-repeat;
+  background-size: cover;
+  color: navy; }
+  .jumbotron h1 {
+    margin: 0 auto;
+    text-align: center;
+    background: rgba(222, 222, 222, 0.8);
+    width: 30%;
+    min-width: 300px;
+    padding: 10px; }
+
+#form {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center; }
+  #form #input {
+    margin: 0 10px;
+    width: 70%; }
+
+#books-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+  #books-container section {
+    min-width: 100%; }
+    #books-container section .horizontal {
+      width: 100%; }
+      #books-container section .horizontal .card {
+        padding: 20px; }
+        #books-container section .horizontal .card .inner-card {
+          align-items: center; }
+          #books-container section .horizontal .card .inner-card .img-container {
+            margin: 10px 0;
+            text-align: center; }
+
+#footer {
+  background: navy;
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 2%; }
+
+body {
+  background: #eee; }
+
+#wrapper {
+  width: 90%;
+  margin: 0 auto; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,14 @@
+@import "./partials/variables";
+@import "./partials/header";
+@import "./partials/form";
+@import "./partials/books";
+@import "./partials/footer";
+
+body {
+  background: $secondary-color;
+}
+
+#wrapper {
+  width: 90%;
+  margin: 0 auto;
+}

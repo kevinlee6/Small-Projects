@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Day Care</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body>
+    <div id='forms'>
+        <div class='daycare-init'>
+            <h1>Add Daycare Form</h1>
+            <input id='input-name' type='text' placeholder='Name of Daycare'/>
+            <!-- Probably better to make this a drop-down -->
+            <input id='input-status' type='text' placeholder="Enter 'Clean' or 'Not clean' for this value" />
+            <input id='input-workers' type='text' placeholder='Number of Workers'/>
+            <button id='add-daycare' class='button-init'>Create a daycare</button>
+        </div>
+
+        <div class='daycare-init'>
+            <h1>Add Child Form</h1>
+            <input id='child-name' type='text' placeholder="Name of Child" />
+            <input id='child-age' type='text' placeholder="Age of Child" />
+            <input id='child-hometown' type='text' placeholder="Hometown of Child" />
+            <input id='child-daycare-id' type='text' placeholder="Daycare ID of Child" />
+            <button id='add-child' class='button-init'>Add a child</button>
+        </div>
+    </div>
+
+<script src="main.js"></script>
+</body>
+</html>

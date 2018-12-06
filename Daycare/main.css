@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #c2e6f1; }
+
+#forms {
+  margin-top: 2%;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap; }
+  #forms .daycare-init {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    #forms .daycare-init h1 {
+      margin: 10px; }
+    #forms .daycare-init input {
+      font-size: 0.9em;
+      width: 100%;
+      margin: 1%;
+      padding: 1% 5%; }
+
+button:focus {
+  outline: none; }
+
+.delete-button {
+  font-weight: bold;
+  color: white;
+  background-color: #b00;
+  margin: 0 10px; }
+  .delete-button:hover {
+    background-color: #f00; }
+
+.parentDiv {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 1% 0; }
+  .parentDiv:nth-child(even) {
+    background-color: lightblue; }
+
+.button-init {
+  font-size: 1.1em;
+  border-radius: 20px;
+  margin: auto; }
+  .button-init:hover {
+    background-color: #0f0; }
+
+.container {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.show-children {
+  width: 50%;
+  font-size: 1.1em;
+  margin-bottom: 1%;
+  font-weight: 500; }
+  .show-children:hover {
+    background-color: #0f0; }
+
+.hidden {
+  display: none; }
+
+.children-list {
+  font-size: 1.2em;
+  font-weight: bold; }
+  .children-list li {
+    display: flex;
+    margin: 2% 0; }
+
+/*# sourceMappingURL=main.css.map */
