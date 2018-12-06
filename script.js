@@ -1,4 +1,5 @@
 const board = document.getElementById('board');
+const results = document.getElementById('results');
 
 class Game {
   constructor() {
@@ -64,9 +65,13 @@ class Game {
     const text = this.state.win ?
       `Congratulations! ${this.state.turnPlayer} won the game.` :
       'Draw. There are no more spaces on the board.'
-    const template = `<div>${text}</div>`
-    const results = document.getElementById('results');
+    const template = 
+      `<div>${text}</div>
+      <button id='reset' class='button'>Reset</button>`
     results.innerHTML = template;
+    
+    const reset = document.getElementById('reset');
+    reset.addEventListener('click', this.reset());
   }
 
   handleClickPiece(piece, i) {
@@ -102,6 +107,20 @@ class Game {
     this.state.turnPlayer =
       this.state.turnPlayer === this.playerOne ?
         this.playerTwo : this.playerOne;
+  }
+
+  reset() {
+    return () => {
+      this.state = {
+        turnNum: 0,
+        turnPlayer: this.playerOne,
+        history: [],
+        win: false,
+      }
+      results.textContent = '';
+      board.textContent = '';
+      this.createGame();
+    }
   }
 
   win() {
