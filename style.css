@@ -45,3 +45,10 @@
   cursor: pointer;
   background-color: rgba(200,200,200,0.3);
 }
+
+@media (max-width: 768px) {
+  .board {
+    width: 90vw;
+    height: 90vw;
+  }
+}
