@@ -41,19 +41,21 @@ class Game {
 
   createGame() {
     for (let i = 0; i < 9; i++) {
-      this.createPiece(i);
+      const piece = this.createPiece(i);
+      const top = Math.floor(i/3) * 33;
+      const left = i % 3 * 33; 
+      piece.style.top = top + '%';
+      piece.style.left = left + '%';
+      // global const, board
+      board.appendChild(piece);
     }
   }
 
   createPiece(i) {
     const piece = document.createElement('div');
     piece.classList.add('piece', 'responsive');
-
-
     piece.addEventListener('click', this.handleClickPiece(piece, i));
-
-    // global const, board
-    board.appendChild(piece);
+    return piece;
   }
 
   endGame() {
