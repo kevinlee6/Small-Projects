@@ -30,10 +30,14 @@ export default class TodoList extends Component {
   };
 
   render() {
-    const { title } = this.props;
+    const { id, title, deleteTodoList } = this.props;
     return (
       <li>
-        <h4>{title}</h4>
+        <div className="TodoList-header">
+          <h4>{title}</h4>
+          <i className="fas fa-edit" />
+          <i onClick={() => deleteTodoList(id)} className="fas fa-trash" />
+        </div>
         <AddTodo addTodo={this.addTodo} />
         <ul>
           {this.state.todos.map(({ id, content }) => (

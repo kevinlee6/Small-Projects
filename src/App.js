@@ -22,7 +22,13 @@ class App extends Component {
     });
   };
 
-  handleAddTodoList = () => {};
+  deleteTodoList = id => {
+    const todoLists = this.state.todoLists;
+    const idx = todoLists.findIndex(todoList => todoList.id === id);
+    this.setState({
+      todoLists: [...todoLists.slice(0, idx), ...todoLists.slice(idx + 1)],
+    });
+  };
 
   render() {
     return (
@@ -30,7 +36,12 @@ class App extends Component {
         <AddTodoList addTodoList={this.addTodoList} />
         <ul>
           {this.state.todoLists.map(({ id, title }) => (
-            <TodoList key={id} id={id} title={title} />
+            <TodoList
+              key={id}
+              id={id}
+              title={title}
+              deleteTodoList={this.deleteTodoList}
+            />
           ))}
         </ul>
       </div>
