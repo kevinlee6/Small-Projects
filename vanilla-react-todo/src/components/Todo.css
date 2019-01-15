@@ -1,0 +1,16 @@
+.Todo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo {
+  cursor: pointer;
+}
+
+.todo-completed {
+  text-decoration: line-through;
+}
+
+.todo-incompleted {
+  font-weight: 500;
+}

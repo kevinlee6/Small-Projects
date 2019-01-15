@@ -1,0 +1,8 @@
+.Options > * {
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.fa-trash {
+  color: firebrick;
+}
