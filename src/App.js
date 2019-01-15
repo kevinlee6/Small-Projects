@@ -1,25 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TodoList from './components/TodoList';
+import AddTodoList from './components/AddTodoList';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.nextTodoListId = 0;
+    this.state = {
+      todoLists: [],
+    };
+  }
+
+  addTodoList = title => {
+    const nextTodoList = {
+      id: ++this.nextTodoListId,
+      title,
+      todos: [],
+    };
+    this.setState({
+      todoLists: [...this.state.todoLists, nextTodoList],
+    });
+  };
+
+  handleAddTodoList = () => {};
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <AddTodoList addTodoList={this.addTodoList} />
+        <ul>
+          {this.state.todoLists.map(({ id, title, todos }) => (
+            <TodoList key={id} id={id} title={title} todos={todos} />
+          ))}
+        </ul>
       </div>
     );
   }
