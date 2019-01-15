@@ -17,6 +17,7 @@ class App extends Component {
     const nextTodoList = {
       id: ++this.nextTodoListId,
       title,
+      editMode: false,
     };
     this.setState({
       todoLists: [...this.state.todoLists, nextTodoList],
@@ -24,11 +25,35 @@ class App extends Component {
   };
 
   deleteTodoList = id => {
-    const todoLists = this.state.todoLists;
+    const todoLists = this.state.todoLists.filter(
+      todoList => todoList.id !== id
+    );
+    this.setState({ todoLists });
+  };
+
+  editTodoList = (id, title) => {
+    const todoLists = this.state.todoLists.slice();
     const idx = todoLists.findIndex(todoList => todoList.id === id);
-    this.setState({
-      todoLists: [...todoLists.slice(0, idx), ...todoLists.slice(idx + 1)],
-    });
+    const todoList = todoLists[idx];
+    const editedTodoList = {
+      ...todoList,
+      title,
+      editMode: false,
+    };
+    todoLists[idx] = editedTodoList;
+    this.setState({ todoLists });
+  };
+
+  toggleTodoListProp = (prop, id) => {
+    const todoLists = this.state.todoLists.slice();
+    const idx = todoLists.findIndex(todoList => todoList.id === id);
+    const todoList = todoLists[idx];
+    const toggledTodoList = {
+      ...todoList,
+      [prop]: !todoList[prop],
+    };
+    todoLists[idx] = toggledTodoList;
+    this.setState({ todoLists });
   };
 
   render() {
@@ -38,12 +63,15 @@ class App extends Component {
         <div className="container">
           <AddTodoList addTodoList={this.addTodoList} />
           <ul className="TodoLists-container row">
-            {this.state.todoLists.map(({ id, title }) => (
+            {this.state.todoLists.map(({ id, title, editMode }) => (
               <TodoList
                 key={id}
                 id={id}
+                editMode={editMode}
                 title={title}
                 deleteTodoList={this.deleteTodoList}
+                editTodoList={this.editTodoList}
+                toggleTodoListProp={this.toggleTodoListProp}
               />
             ))}
           </ul>

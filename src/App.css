@@ -1,12 +1,3 @@
 .TodoLists-container {
   list-style: none;
 }
-
-.options > * {
-  cursor: pointer;
-  margin: 0 5px;
-}
-
-.fa-trash {
-  color: firebrick;
-}
