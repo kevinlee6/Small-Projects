@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Header from './components/Header';
 import TodoList from './components/TodoList';
 import AddTodoList from './components/AddTodoList';
 
@@ -32,18 +33,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App container">
-        <AddTodoList addTodoList={this.addTodoList} />
-        <ul className="row">
-          {this.state.todoLists.map(({ id, title }) => (
-            <TodoList
-              key={id}
-              id={id}
-              title={title}
-              deleteTodoList={this.deleteTodoList}
-            />
-          ))}
-        </ul>
+      <div className="App">
+        <Header />
+        <div className="container">
+          <AddTodoList addTodoList={this.addTodoList} />
+          <ul className="row">
+            {this.state.todoLists.map(({ id, title }) => (
+              <TodoList
+                key={id}
+                id={id}
+                title={title}
+                deleteTodoList={this.deleteTodoList}
+              />
+            ))}
+          </ul>
+        </div>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './AddTodoList.css';
 
 export default class TodoList extends Component {
   state = {
@@ -22,13 +23,15 @@ export default class TodoList extends Component {
 
   render() {
     return (
-      <form className="form-inline" onSubmit={this.handleSubmit}>
+      <form className="AddTodoList form-inline" onSubmit={this.handleSubmit}>
         <input
+          className="form-control mb-3 mr-sm-3"
+          placeholder="Title of Todo List"
           onChange={this.handleChange}
           value={this.state.title}
           type="text"
         />
-        <button className="btn btn-primary">Add List</button>
+        <button className="btn btn-primary mb-3">Add List</button>
       </form>
     );
   }
