@@ -16,7 +16,6 @@ class App extends Component {
     const nextTodoList = {
       id: ++this.nextTodoListId,
       title,
-      todos: [],
     };
     this.setState({
       todoLists: [...this.state.todoLists, nextTodoList],
@@ -30,8 +29,8 @@ class App extends Component {
       <div className="App">
         <AddTodoList addTodoList={this.addTodoList} />
         <ul>
-          {this.state.todoLists.map(({ id, title, todos }) => (
-            <TodoList key={id} id={id} title={title} todos={todos} />
+          {this.state.todoLists.map(({ id, title }) => (
+            <TodoList key={id} id={id} title={title} />
           ))}
         </ul>
       </div>

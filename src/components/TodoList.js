@@ -21,14 +21,28 @@ export default class TodoList extends Component {
     });
   };
 
+  deleteTodo = id => {
+    const todos = this.state.todos;
+    const idx = todos.findIndex(todo => todo.id === id);
+    this.setState({
+      todos: [...todos.slice(0, idx), ...todos.slice(idx + 1)],
+    });
+  };
+
   render() {
+    const { title } = this.props;
     return (
       <li>
-        <h4>{this.props.title}</h4>
+        <h4>{title}</h4>
         <AddTodo addTodo={this.addTodo} />
         <ul>
           {this.state.todos.map(({ id, content }) => (
-            <Todo key={id} id={id} content={content} />
+            <Todo
+              key={id}
+              id={id}
+              content={content}
+              deleteTodo={this.deleteTodo}
+            />
           ))}
         </ul>
       </li>
