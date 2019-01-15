@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Todo.css';
 import Options from './Options';
 
-const cName = completed => (completed ? 'Todo-completed' : 'Todo-incompleted');
+const cName = completed => (completed ? 'todo-completed' : 'todo-incompleted');
 
 export default class Todo extends Component {
   state = {
@@ -40,7 +40,7 @@ export default class Todo extends Component {
           />
         ) : (
           <span
-            className={cName(completed)}
+            className={`todo ${cName(completed)}`}
             onClick={() => toggleProp('completed', id)}
           >
             {content}
