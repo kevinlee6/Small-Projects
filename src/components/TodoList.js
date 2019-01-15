@@ -37,11 +37,13 @@ export default class TodoList extends Component {
         <div className="TodoList">
           <div className="TodoList-header">
             <h4>{title}</h4>
-            <i className="fas fa-edit" />
-            <i onClick={() => deleteTodoList(id)} className="fas fa-trash" />
+            <div className="options">
+              <i className="fas fa-edit" />
+              <i onClick={() => deleteTodoList(id)} className="fas fa-trash" />
+            </div>
           </div>
           <AddTodo addTodo={this.addTodo} />
-          <ul>
+          <ul className="TodoList-todos">
             {this.state.todos.map(({ id, content }) => (
               <Todo
                 key={id}

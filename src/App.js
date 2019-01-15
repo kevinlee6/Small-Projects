@@ -37,7 +37,7 @@ class App extends Component {
         <Header />
         <div className="container">
           <AddTodoList addTodoList={this.addTodoList} />
-          <ul className="row">
+          <ul className="TodoLists-container row">
             {this.state.todoLists.map(({ id, title }) => (
               <TodoList
                 key={id}
