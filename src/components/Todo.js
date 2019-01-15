@@ -1,10 +1,13 @@
 import React from 'react';
+import './Todo.css';
 
 const Todo = ({ id, content, deleteTodo }) => (
-  <li key={id}>
+  <li key={id} className="Todo">
     <span>{content}</span>
-    <i className="fas fa-edit" />
-    <i onClick={() => deleteTodo(id)} className="fas fa-trash" />
+    <div className="options">
+      <i className="fas fa-edit" />
+      <i onClick={() => deleteTodo(id)} className="fas fa-trash" />
+    </div>
   </li>
 );
 

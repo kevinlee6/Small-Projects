@@ -32,9 +32,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App container">
         <AddTodoList addTodoList={this.addTodoList} />
-        <ul>
+        <ul className="row">
           {this.state.todoLists.map(({ id, title }) => (
             <TodoList
               key={id}

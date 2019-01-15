@@ -1,0 +1,12 @@
+.TodoList {
+  width: 80%;
+}
+
+.TodoList-header {
+  display: flex;
+  align-items: center;
+}
+
+.TodoList-header h4 {
+  margin: 0;
+}

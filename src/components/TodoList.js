@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Todo from './Todo';
 import AddTodo from './AddTodo';
+import './TodoList.css';
 
 export default class TodoList extends Component {
   constructor(props) {
@@ -32,23 +33,25 @@ export default class TodoList extends Component {
   render() {
     const { id, title, deleteTodoList } = this.props;
     return (
-      <li>
-        <div className="TodoList-header">
-          <h4>{title}</h4>
-          <i className="fas fa-edit" />
-          <i onClick={() => deleteTodoList(id)} className="fas fa-trash" />
+      <li className="TodoList-container col-md-4">
+        <div className="TodoList">
+          <div className="TodoList-header">
+            <h4>{title}</h4>
+            <i className="fas fa-edit" />
+            <i onClick={() => deleteTodoList(id)} className="fas fa-trash" />
+          </div>
+          <AddTodo addTodo={this.addTodo} />
+          <ul>
+            {this.state.todos.map(({ id, content }) => (
+              <Todo
+                key={id}
+                id={id}
+                content={content}
+                deleteTodo={this.deleteTodo}
+              />
+            ))}
+          </ul>
         </div>
-        <AddTodo addTodo={this.addTodo} />
-        <ul>
-          {this.state.todos.map(({ id, content }) => (
-            <Todo
-              key={id}
-              id={id}
-              content={content}
-              deleteTodo={this.deleteTodo}
-            />
-          ))}
-        </ul>
       </li>
     );
   }
