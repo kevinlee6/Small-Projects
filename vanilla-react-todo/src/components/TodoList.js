@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import VisibilityFilter from './VisibilityFilter';
 import Todo from './Todo';
 import AddTodo from './AddTodo';
 import Options from './Options';
@@ -11,6 +12,7 @@ export default class TodoList extends Component {
     this.state = {
       editedTitle: this.props.title,
       todos: [],
+      visibility: 'all',
     };
   }
 
@@ -46,6 +48,27 @@ export default class TodoList extends Component {
     this.setState({ todos });
   };
 
+  byVisibility = () => {
+    const visibility = this.state.visibility;
+    const todos = this.state.todos;
+    switch (visibility) {
+      case 'completed': {
+        return todos.filter(todo => todo.completed);
+      }
+      case 'incompleted': {
+        return todos.filter(todo => !todo.completed);
+      }
+      default: {
+        return todos;
+      }
+    }
+  };
+
+  getVisibility = e => {
+    const visibility = e.target.value;
+    this.setState({ visibility });
+  };
+
   toggleProp = (prop, id) => {
     const todos = this.state.todos.slice();
     const idx = todos.findIndex(todo => todo.id === id);
@@ -79,6 +102,7 @@ export default class TodoList extends Component {
     } = this.props;
     return (
       <li className="TodoList-container col-md-4">
+        <VisibilityFilter getVisibility={this.getVisibility} />
         <div className="TodoList">
           <div className="TodoList-header">
             {editMode ? (
@@ -102,7 +126,7 @@ export default class TodoList extends Component {
           </div>
           <AddTodo addTodo={this.addTodo} />
           <ul className="TodoList-todos">
-            {this.state.todos.map(({ id, content, completed, editMode }) => (
+            {this.byVisibility().map(({ id, content, completed, editMode }) => (
               <Todo
                 key={id}
                 id={id}
