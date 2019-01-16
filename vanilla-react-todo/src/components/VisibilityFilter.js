@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react';
+import './VisibilityFilter.css';
 
 const Button = ({
   children,
@@ -48,7 +49,7 @@ export default class VisibilityFilter extends Component {
   render() {
     const { getVisibility } = this.props;
     return (
-      <div className="btn-group">
+      <div className="VisibilityFilter-buttons btn-group">
         <Button
           changeActive={this.changeActive}
           getVisibility={getVisibility}
