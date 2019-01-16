@@ -125,7 +125,7 @@ export default class TodoList extends Component {
             />
           </div>
           <AddTodo addTodo={this.addTodo} />
-          <ul className="TodoList-todos">
+          <ul className="TodoList-todos list-group list-group-flush">
             {this.byVisibility().map(({ id, content, completed, editMode }) => (
               <Todo
                 key={id}

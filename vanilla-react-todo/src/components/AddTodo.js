@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './AddTodo.css';
 
 export default class AddTodo extends Component {
   state = {
@@ -22,8 +23,9 @@ export default class AddTodo extends Component {
 
   render() {
     return (
-      <form className="form-inline" onSubmit={this.handleSubmit}>
+      <form className="form-inline AddTodo" onSubmit={this.handleSubmit}>
         <input
+          className="form-control"
           onChange={this.handleChange}
           value={this.state.content}
           type="text"

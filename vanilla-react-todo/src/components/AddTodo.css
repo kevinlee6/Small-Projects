@@ -1,0 +1,7 @@
+.AddTodo {
+  justify-content: center;
+}
+
+.AddTodo > * {
+  margin: 5px;
+}

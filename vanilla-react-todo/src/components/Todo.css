@@ -5,6 +5,8 @@
 
 .todo {
   cursor: pointer;
+  word-wrap: break-word;
+  max-width: 80%;
 }
 
 .todo-completed {

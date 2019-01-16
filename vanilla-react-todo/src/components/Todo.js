@@ -31,7 +31,7 @@ export default class Todo extends Component {
       editMode,
     } = this.props;
     return (
-      <li key={id} className="Todo">
+      <li key={id} className="Todo list-group-item">
         {editMode ? (
           <input
             onChange={e => this.updateContent(e)}
