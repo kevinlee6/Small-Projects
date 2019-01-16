@@ -1,6 +1,13 @@
 import React, { Component, createRef } from 'react';
 
-const Button = ({ children, active, passRef, changeActive, getVisibility }) => (
+const Button = ({
+  children,
+  val,
+  active,
+  passRef,
+  changeActive,
+  getVisibility,
+}) => (
   <button
     onClick={e => {
       changeActive(e);
@@ -8,6 +15,7 @@ const Button = ({ children, active, passRef, changeActive, getVisibility }) => (
     }}
     ref={passRef}
     className={`${active || ''} btn btn-secondary`}
+    value={val}
   >
     {children}
   </button>
@@ -46,13 +54,22 @@ export default class VisibilityFilter extends Component {
           getVisibility={getVisibility}
           passRef={this.active}
           active="active"
+          val="All"
         >
           All
         </Button>
-        <Button changeActive={this.changeActive} getVisibility={getVisibility}>
+        <Button
+          changeActive={this.changeActive}
+          getVisibility={getVisibility}
+          val="Completed"
+        >
           Completed
         </Button>
-        <Button changeActive={this.changeActive} getVisibility={getVisibility}>
+        <Button
+          changeActive={this.changeActive}
+          getVisibility={getVisibility}
+          val="Incompleted"
+        >
           Incompleted
         </Button>
       </div>

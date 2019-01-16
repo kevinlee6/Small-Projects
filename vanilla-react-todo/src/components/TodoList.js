@@ -65,7 +65,7 @@ export default class TodoList extends Component {
   };
 
   getVisibility = e => {
-    const visibility = e.target.value;
+    const visibility = e.target.value.toLowerCase();
     this.setState({ visibility });
   };
 
